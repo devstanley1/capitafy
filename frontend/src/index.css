@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Custom Scrollbar for Cyberpunk Glassmorphic feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(3, 7, 18, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.6);
+}
+
+/* Glassmorphism utility animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+  }
+}
+
+.glow-purple {
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scanline::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════
+   BACKGROUND EFFECTS (ORIGINAL NEON BLOBS)
+   ══════════════════════════════════ */
+.background-effects {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.22;
+  animation: blobFloat 20s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  top: -15%; left: -10%;
+  width: 50vw; height: 50vw;
+  background: #8a2be2;
+}
+
+.blob-2 {
+  bottom: -15%; right: -10%;
+  width: 40vw; height: 40vw;
+  background: #00ff88;
+  opacity: 0.08;
+  animation-delay: -10s;
+}
+
+.blob-3 {
+  top: 40%; right: 20%;
+  width: 25vw; height: 25vw;
+  background: #00d4ff;
+  opacity: 0.05;
+  animation-delay: -5s;
+}
+
+@keyframes blobFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.05); }
+  100% { transform: translate(-20px, 15px) scale(0.95); }
+}

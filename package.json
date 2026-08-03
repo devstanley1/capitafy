@@ -1,0 +1,21 @@
+{
+  "name": "capitafy-root",
+  "version": "1.0.0",
+  "description": "Capitafy - CRM and Instagram Lead Scraper Platform",
+  "main": "main.js",
+  "scripts": {
+    "install-all": "npm install && npm install --prefix backend && npm install --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "start": "npm run start --prefix backend",
+    "desktop": "electron .",
+    "build-all": "npm run build --prefix frontend && npm install"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "puppeteer-core": "^22.6.0"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+Olá @{{username}}! Analisei seu perfil e vejo que você tem um engajamento excelente. Temos uma proposta muito lucrativa para parceria na nossa plataforma. Teria interesse em conversar mais sobre?
+---
+Fala @{{username}}! Tudo bem? Curti muito seus posts. Estamos selecionando alguns perfis de destaque para fazer campanhas de iGaming essa semana, com ótimos retornos. Topa ouvir a proposta?
+---
+E aí @{{username}}! Temos um projeto rodando muito forte aqui na região e seu perfil encaixa perfeitamente como parceiro oficial. Ganhos excelentes por divulgação. Se tiver interesse, responde aqui!
+---
+Salve {nome}! Seus vídeos empinando a moto são muito compartilhados. Fazemos parcerias com influenciadores do mundo das duas rodas para envio de mimos e patrocínios mensais de manutenção. Quer conhecer a proposta?
+---
+Eae irmão! Só piloto de verdade nas suas postagens. Temos uma marca parceira de vestuário de rua e queremos fazer uma campanha de provador ou divulgação paga com você nos Stories. Quanto você cobra por story?
+---
+Eae parceiro, blz? Vi seus vídeos dando grau e o engajamento tá insano! A gente faz parceria com páginas de moto e sorteios, e temos um projeto pra você ganhar uma grana divulgando rifas e marcas parceiras. Topa ver como funciona?
