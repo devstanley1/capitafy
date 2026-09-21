@@ -187,6 +187,8 @@ db.run('PRAGMA journal_mode = WAL;');
 
 const configFile = path.join(__dirname, '..', 'database', 'config_scraper.json');
 const copiesFile = path.join(__dirname, '..', 'database', 'copies.txt');
+const copiesNicheFile = path.join(__dirname, '..', 'database', 'copies_by_niche.json');
+const { NICHE_TAXONOMY, NICHE_COPY_POOLS, detectLeadNiche } = require('../bot/niche_copy_engine');
 
 // Helper para obter o executável do Chrome em múltiplos ambientes
 function getChromePath() {
@@ -526,6 +528,33 @@ app.post('/api/system/copies', (req, res) => {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(copiesFile, copies.join('\n---\n'));
     res.json({ success: true, message: 'Copys salvas' });
+});
+
+// Endpoint com inteligência de nichos
+app.get('/api/system/copies-by-niche', (req, res) => {
+    let copiesByNiche = {};
+    if (fs.existsSync(copiesNicheFile)) {
+        try {
+            copiesByNiche = JSON.parse(fs.readFileSync(copiesNicheFile, 'utf8'));
+        } catch (e) {
+            copiesByNiche = {};
+        }
+    }
+    const result = {};
+    for (const [key, val] of Object.entries(NICHE_COPY_POOLS)) {
+        result[key] = (copiesByNiche[key] && copiesByNiche[key].length > 0) 
+            ? copiesByNiche[key] 
+            : val;
+    }
+    res.json({ copiesByNiche: result, taxonomy: NICHE_TAXONOMY });
+});
+
+app.post('/api/system/copies-by-niche', (req, res) => {
+    const { copiesByNiche } = req.body;
+    const dir = path.dirname(copiesNicheFile);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(copiesNicheFile, JSON.stringify(copiesByNiche, null, 2), 'utf8');
+    res.json({ success: true, message: 'Copys por nicho salvas com sucesso' });
 });
 
 // ════════════════════════════════════════

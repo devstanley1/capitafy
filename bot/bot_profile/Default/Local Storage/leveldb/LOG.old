@@ -1,3 +1,9 @@
-2026/06/16-15:16:14.239 6040 Reusing MANIFEST C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/MANIFEST-000001
-2026/06/16-15:16:14.257 6040 Recovering log #37
-2026/06/16-15:16:14.272 6040 Reusing old log C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/000037.log 
+2026/09/21-13:52:52.180 6fdc Reusing MANIFEST C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/09/21-13:52:52.208 6fdc Recovering log #37
+2026/09/21-13:52:52.223 6fdc Reusing old log C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/000037.log 
+2026/09/21-13:55:55.372 5e74 Level-0 table #42: started
+2026/09/21-13:55:55.381 5e74 Level-0 table #42: 21998 bytes OK
+2026/09/21-13:55:55.387 5e74 Delete type=0 #37
+2026/09/21-13:59:41.456 5e74 Level-0 table #44: started
+2026/09/21-13:59:41.495 5e74 Level-0 table #44: 21652 bytes OK
+2026/09/21-13:59:41.505 5e74 Delete type=0 #41

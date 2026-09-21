@@ -8,6 +8,7 @@ const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const { getCopyForLead, detectLeadNiche, NICHE_TAXONOMY } = require('./niche_copy_engine');
 
 // Helper para obter o executável do Chrome em múltiplos ambientes
 function getChromePath() {
@@ -125,19 +126,23 @@ const randomDelay = (min, max) => new Promise(resolve => setTimeout(resolve, Mat
 
     // Obter copys
     let COPIES = [];
+    let copiesByNiche = {};
     try {
         const copiesData = await callAPI('/system/copies');
         COPIES = copiesData.copies || [];
-        console.log(`[✓] Carregadas ${COPIES.length} copys do servidor.`);
+        console.log(`[✓] Carregadas ${COPIES.length} copys customizadas do servidor.`);
     } catch(e) {
-        console.log("❌ Erro ao carregar copys do servidor.");
-        return;
+        console.log("ℹ️ Usando pool de copys inteligentes nativas do sistema.");
     }
 
-    if (COPIES.length === 0) {
-        console.log("❌ Nenhuma copy disponível para disparar.");
-        return;
+    try {
+        const nicheCopiesData = await callAPI('/system/copies-by-niche');
+        copiesByNiche = nicheCopiesData.copiesByNiche || {};
+    } catch(e) {
+        // Silencioso se não houver endpoint
     }
+
+    console.log(`🧠 [IA NICHO]: Motor de correspondência ativado. Cada perfil receberá mensagem específica do seu nicho.`);
 
     // Definição do Nicho
     let escolhaNicho = process.env.NICHO_FILTER || (process.argv.length > 2 ? process.argv[2] : 'todos');
@@ -300,10 +305,12 @@ const randomDelay = (min, max) => new Promise(resolve => setTimeout(resolve, Mat
                 }
             }
 
-            // Sorteando copy
-            const randomIndex = Math.floor(Math.random() * COPIES.length);
-            let msg = COPIES[randomIndex];
-            msg = msg.replace(/\{\{username\}\}/ig, TARGET).replace(/\{nome\}/ig, TARGET);
+            // Seleção Inteligente de Copy pelo Nicho do Perfil
+            const leadCopyInfo = getCopyForLead(alvo, COPIES, copiesByNiche);
+            let msg = leadCopyInfo.copy;
+
+            console.log(`🎯 [NICHO DETECTADO]: @${TARGET} identificado como nicho "${leadCopyInfo.label}" (Tag cadastrada: "${alvo.niche || 'sem tag'}")`);
+            console.log(`📝 [COPY SOB MEDIDA]: "${msg.replace(/\r?\n/g, ' ').substring(0, 100)}..."`);
 
             let messageSent = false;
 

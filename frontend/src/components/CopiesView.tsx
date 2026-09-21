@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Square, Save, FileText, Send, HelpCircle, Filter, Sparkles, Plus, Copy, Check } from 'lucide-react';
+import { Play, Square, Save, FileText, Send, HelpCircle, Filter, Sparkles, Plus, Copy, Check, ShieldCheck, Zap, Layers } from 'lucide-react';
 import { SystemStatus } from '../types';
 
 interface CopiesViewProps {
@@ -12,6 +12,22 @@ interface CopiesViewProps {
 }
 
 const PRESET_COPY_POOLS: Record<string, string[]> = {
+  apostas: [
+    "Olá {nome}, tudo bem? Seu perfil tem um engajamento excelente e curtimos muito o seu estilo. Representamos uma plataforma de apostas esportivas licenciada e temos uma proposta de banca patrocinada + comissões de até 70% por indicação. Topa?",
+    "Oi {nome}, tudo ótimo? Vimos suas publicações e achamos seu público super qualificado. Temos uma casa de apostas em expansão no Brasil e gostaríamos de fechar uma campanha de stories pagos para promover nosso bônus de boas-vindas. Posso te apresentar?",
+    "Olá! Vi seu lifestyle e a qualidade dos seus stories. Temos um robô de sinais / grupo VIP de apostas e queríamos te propor uma parceria para divulgar o link com comissão recorrente e banca inicial grátis de R$ 500. Bora conversar?",
+    "Oi {nome}, beleza? Temos interesse em patrocinar influenciadores no nicho de entretenimento e esportes para divulgação de palpites. Oferecemos um fixo mensal + bônus de performance por cada cadastro ativo. Onde posso te enviar o PDF do projeto?",
+    "Olá {nome}, tudo tranquilo? Vimos que seu público gosta de futebol/games. Queremos fechar uma parceria de publipost nos Stories para nossa plataforma de apostas online. Qual o seu valor por inserção de 3 stories com link?",
+    "Oi {nome}! Temos um sistema inovador de apostas integradas e buscamos parceiros com bom engajamento para provador e recomendação nos Stories. Se tiver interesse em receber comissões automáticas no Pix, me avisa!"
+  ],
+  grau_244: [
+    "Eae {nome}, blz? Só manobra chave no feed hein! A gente representa uma marca de peças de moto e roupas de quebrada e queríamos te mandar um kit pesado (camiseta, boné e adesivos) de presente. Qual o tamanho que você usa?",
+    "Salve {nome}, de boa? Muito louco os seus motovlogs! Temos um site de acessórios de moto e estamos selecionando os pilotos mais brabos do Instagram para representar a marca e fechar parceria paga. Bora trocar uma ideia?",
+    "Eae parceiro, blz? Vi seus vídeos dando grau e o engajamento tá insano! A gente faz parceria com páginas de moto e sorteios, e temos um projeto pra você ganhar uma grana divulgando rifas e marcas parceiras. Topa ver como funciona?",
+    "Salve {nome}, beleza? Seu perfil tá crescendo rápido e as fotos da sua moto estão monstras! Queremos te mandar um patrocínio de peças/capacetes para você dar aquele talento no visual e postar nos Stories. Onde eu te mando os detalhes?",
+    "Eae irmão! Só piloto de verdade nas suas postagens. Temos uma marca parceira de vestuário de rua e queremos fazer uma campanha de provador ou divulgação paga com você nos Stories. Quanto você cobra por story?",
+    "Salve {nome}! Seus vídeos empinando a moto são muito compartilhados. Fazemos parcerias com influenciadores do mundo das duas rodas para envio de mimos e patrocínios mensais de manutenção. Quer conhecer a proposta?"
+  ],
   beleza_moda: [
     "Olá {nome}! Tudo bem? Vi suas publicações de looks e amei o seu estilo! Trabalhamos com marcas de moda feminina e estamos selecionando novos perfis para campanhas de recebidos. Teria interesse em conhecer?",
     "Oi {nome}, tudo joia? Adorei suas dicas de maquiagem e autocuidado no feed. Temos uma proposta super bacana de parceria com cupom exclusivo e comissões para criadoras de conteúdo de beleza. Posso te enviar os detalhes?",
@@ -60,14 +76,6 @@ const PRESET_COPY_POOLS: Record<string, string[]> = {
     "Olá {nome}! Muito massa o seu lifestyle de negócios. Nossa agência atende players do mercado digital e estamos contratando influencers para campanhas pontuais de lançamentos. Teria interesse em fazer um orçamento?",
     "Oi {nome}, beleza? Acompanho seus posts e gosto muito da sua visão profissional. Temos uma proposta de patrocínio para o seu canal/Instagram com foco em ferramentas de negócios. Toparia dar uma olhada na nossa proposta comercial?"
   ],
-  grau_244: [
-    "Eae {nome}, blz? Só manobra chave no feed hein! A gente representa uma marca de peças de moto e roupas de quebrada e queríamos te mandar um kit pesado (camiseta, boné e adesivos) de presente. Qual o tamanho que você usa?",
-    "Salve {nome}, de boa? Muito louco os seus motovlogs! Temos um site de acessórios de moto e estamos selecionando os pilotos mais brabos do Instagram para representar a marca e fechar parceria paga. Bora trocar uma ideia?",
-    "Eae parceiro, blz? Vi seus vídeos dando grau e o engajamento tá insano! A gente faz parceria com páginas de moto e sorteios, e temos um projeto pra você ganhar uma grana divulgando rifas e marcas parceiras. Topa ver como funciona?",
-    "Salve {nome}, beleza? Seu perfil tá crescendo rápido e as fotos da sua moto estão monstras! Queremos te mandar um patrocínio de peças/capacetes para você dar aquele talento no visual e postar nos Stories. Onde eu te mando os detalhes?",
-    "Eae irmão! Só piloto de verdade nas suas postagens. Temos uma marca parceira de vestuário de rua e queremos fazer uma campanha de provador ou divulgação paga com você nos Stories. Quanto você cobra por story?",
-    "Salve {nome}! Seus vídeos empinando a moto são muito compartilhados. Fazemos parcerias com influenciadores do mundo das duas rodas para envio de mimos e patrocínios mensais de manutenção. Quer conhecer a proposta?"
-  ],
   maes_lifestyle: [
     "Olá {nome}! Tudo bem? Adoro acompanhar a sua rotina materna real e as dicas de família que você posta! Trabalhamos com uma marca infantil e de produtos para o lar, e gostaríamos de te enviar alguns recebidos. Qual o melhor contato?",
     "Oi {nome}, tudo joia? O seu estilo de vida e a sua maternidade são super inspiradores. Temos uma linha completa de autocuidado para mães e gostaríamos de fechar uma parceria de provador e cupons com você. Teria interesse?",
@@ -99,16 +107,23 @@ const PRESET_COPY_POOLS: Record<string, string[]> = {
     "Oi {nome}, tudo tranquilo? Sua barbearia tá com um visual muito moderno! Queremos te patrocinar com aventais de couro personalizados e capas de corte com o logo da sua marca em troca de algumas menções. Qual o melhor contato?",
     "Eae irmão, blz? Curti muito seus motovlogs/vídeos de barbearia do dia a dia. Temos uma marca parceira de moda masculina e queremos fazer um publipost pago com foco nos clientes da barbearia. Quanto você cobra por divulgação?",
     "Salve {nome}! Seu feed de cortes masculinos é pura inspiração. Fazemos assessoria para barbeiros profissionais e queremos te enviar nossa nova linha de cuidados pós-barba de presente. Como podemos combinar o envio?"
-  ],
-  apostas: [
-    "Olá {nome}, tudo bem? Seu perfil tem um engajamento excelente e curtimos muito o seu estilo. Representamos uma plataforma de apostas esportivas licenciada e temos uma proposta de banca patrocinada + comissões de até 70% por indicação. Topa?",
-    "Oi {nome}, tudo ótimo? Vimos suas publicações e achamos seu público super qualificado. Temos uma casa de apostas em expansão no Brasil e gostaríamos de fechar uma campanha de stories pagos para promover nosso bônus de boas-vindas. Posso te apresentar?",
-    "Olá! Vi seu lifestyle e a qualidade dos seus stories. Temos um robô de sinais / grupo VIP de apostas e queríamos te propor uma parceria para divulgar o link com comissão recorrente e banca inicial grátis de R$ 500. Bora conversar?",
-    "Oi {nome}, beleza? Temos interesse em patrocinar influenciadores no nicho de entretenimento e esportes para divulgação de palpites. Oferecemos um fixo mensal + bônus de performance por cada cadastro ativo. Onde posso te enviar o PDF do projeto?",
-    "Olá {nome}, tudo tranquilo? Vimos que seu público gosta de futebol/games. Queremos fechar uma parceria de publipost nos Stories para nossa plataforma de apostas online. Qual o seu valor por inserção de 3 stories com link?",
-    "Oi {nome}! Temos um sistema inovador de apostas integradas e buscamos parceiros com bom engajamento para provador e recomendação nos Stories. Se tiver interesse em receber comissões automáticas no Pix, me avisa!"
   ]
 };
+
+const PRESET_OPTIONS = [
+  { value: 'apostas', label: 'Apostas & iGaming' },
+  { value: 'grau_244', label: 'Grau (244) & Motos' },
+  { value: 'beleza_moda', label: 'Beleza & Moda' },
+  { value: 'saude_fitness', label: 'Saúde & Fitness' },
+  { value: 'viagem_turismo', label: 'Viagem & Turismo' },
+  { value: 'culinaria_receitas', label: 'Culinária & Receitas' },
+  { value: 'pets_animais', label: 'Pets & Animais' },
+  { value: 'empreendedorismo_marketing', label: 'Empreendedorismo & Marketing' },
+  { value: 'maes_lifestyle', label: 'Mães / Lifestyle' },
+  { value: 'humor_comedia', label: 'Humor & Comédia' },
+  { value: 'gamers_streaming', label: 'Gamers & Streaming' },
+  { value: 'barbearias', label: 'Barbearias' }
+];
 
 export const CopiesView: React.FC<CopiesViewProps> = ({
   copies,
@@ -118,35 +133,75 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
   onStopSending,
   uniqueNiches
 }) => {
+  // Escopo de edição: 'global' ou 'niche'
+  const [editorScope, setEditorScope] = useState<'global' | 'niche'>('global');
+  const [activeNicheKey, setActiveNicheKey] = useState('apostas');
+
   const [editorText, setEditorText] = useState('');
   const [nicheFilter, setNicheFilter] = useState('todos');
   const [isSaving, setIsSaving] = useState(false);
 
-  // States for Copy Factory
-  const [selectedPreset, setSelectedPreset] = useState('beleza_moda');
+  // Armazenamento de cópias customizadas por nicho
+  const [nicheCopiesMap, setNicheCopiesMap] = useState<Record<string, string[]>>({});
+
+  // States da Fábrica de Copys
+  const [selectedPreset, setSelectedPreset] = useState('apostas');
   const [generatedCopies, setGeneratedCopies] = useState<string[]>([]);
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [justAdded, setJustAdded] = useState(false);
 
+  // Carregar cópias por nicho do servidor
   useEffect(() => {
-    // Reconstruct the files representation using '---' as delimiter
-    if (copies && copies.length > 0) {
-      setEditorText(copies.join('\n---\n'));
+    fetch('/api/system/copies-by-niche')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.copiesByNiche) {
+          setNicheCopiesMap(data.copiesByNiche);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Sincronizar o editor conforme escopo ativo
+  useEffect(() => {
+    if (editorScope === 'global') {
+      if (copies && copies.length > 0) {
+        setEditorText(copies.join('\n---\n'));
+      } else {
+        setEditorText('');
+      }
     } else {
-      setEditorText('');
+      const specificCopies = nicheCopiesMap[activeNicheKey] || PRESET_COPY_POOLS[activeNicheKey] || [];
+      setEditorText(specificCopies.join('\n---\n'));
     }
-  }, [copies]);
+  }, [editorScope, activeNicheKey, copies, nicheCopiesMap]);
 
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      // Split by --- and trim individual items
-      const newCopies = editorText
+      const parsedCopies = editorText
         .split('---')
         .map(c => c.trim())
         .filter(c => c !== '');
-      
-      await onSaveCopies(newCopies);
+
+      if (editorScope === 'global') {
+        await onSaveCopies(parsedCopies);
+      } else {
+        // Salvar cópias do nicho específico
+        const updated = {
+          ...nicheCopiesMap,
+          [activeNicheKey]: parsedCopies
+        };
+        setNicheCopiesMap(updated);
+
+        await fetch('/api/system/copies-by-niche', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ copiesByNiche: updated })
+        });
+
+        alert(`Templates do nicho "${PRESET_OPTIONS.find(p => p.value === activeNicheKey)?.label}" salvos com sucesso!`);
+      }
     } finally {
       setIsSaving(false);
     }
@@ -159,8 +214,7 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
   const generateCopies = () => {
     const pool = PRESET_COPY_POOLS[selectedPreset] || [];
     if (pool.length < 3) return;
-    
-    // Pick 3 random distinct copies
+
     const shuffled = [...pool].sort(() => 0.5 - Math.random());
     setGeneratedCopies(shuffled.slice(0, 3));
     setCopiedIdx(null);
@@ -173,32 +227,18 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
     setTimeout(() => setCopiedIdx(null), 2000);
   };
 
-  const applyGeneratedCopies = () => {
+  const applyGeneratedCopiesToNiche = () => {
     if (generatedCopies.length === 0) return;
-    
+
+    // Muda o escopo para o nicho que foi gerado
+    setEditorScope('niche');
+    setActiveNicheKey(selectedPreset);
+
     const formatted = generatedCopies.join('\n---\n');
-    const currentText = editorText.trim();
-    const newText = currentText === '' ? formatted : currentText + '\n---\n' + formatted;
-    
-    setEditorText(newText);
+    setEditorText(formatted);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 3000);
   };
-
-  const presetOptions = [
-    { value: 'beleza_moda', label: 'Beleza & Moda' },
-    { value: 'saude_fitness', label: 'Saúde & Fitness' },
-    { value: 'viagem_turismo', label: 'Viagem & Turismo' },
-    { value: 'culinaria_receitas', label: 'Culinária & Receitas' },
-    { value: 'pets_animais', label: 'Pets & Animais' },
-    { value: 'empreendedorismo_marketing', label: 'Empreendedorismo & Marketing' },
-    { value: 'grau_244', label: 'Grau (244)' },
-    { value: 'maes_lifestyle', label: 'Mães/Lifestyle' },
-    { value: 'humor_comedia', label: 'Humor & Comédia' },
-    { value: 'gamers_streaming', label: 'Gamers & Streaming' },
-    { value: 'barbearias', label: 'Barbearias' },
-    { value: 'apostas', label: 'Apostas' }
-  ];
 
   return (
     <div className="space-y-6 animate-fade-in">
@@ -206,22 +246,98 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
       <div>
         <h2 className="text-2xl font-bold tracking-tight text-white font-sans flex items-center gap-2">
           <FileText className="text-purple-400 w-7 h-7" />
-          Campanhas e Copywritings
+          Fábrica de Copys & Disparo Segmentado
         </h2>
-        <p className="text-gray-400 text-xs mt-1">Configure suas mensagens de abordagem com split-testing rotativo e gerencie os envios em massa.</p>
+        <p className="text-gray-400 text-xs mt-1">Crie abordagens personalizadas para cada nicho e dispare com identificação automática do perfil.</p>
       </div>
- 
+
+      {/* Banner de Proteção Inteligente por Nicho */}
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-950/40 via-emerald-950/30 to-purple-950/40 border border-emerald-500/30 shadow-lg relative overflow-hidden">
+        <div className="flex items-start gap-3.5">
+          <div className="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 mt-0.5">
+            <ShieldCheck className="w-5 h-5 animate-pulse" />
+          </div>
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-white uppercase tracking-wider">
+                IA de Identificação de Nicho Ativa
+              </span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-semibold flex items-center gap-1">
+                <Zap className="w-2.5 h-2.5 fill-current" /> Proteção Anti-Troca de Nicho
+              </span>
+            </div>
+            <p className="text-xs text-gray-300 leading-relaxed">
+              Ao iniciar o disparo, o robô analisa o perfil individual de cada lead. Perfis de <strong className="text-emerald-400 font-semibold">apostas esportivas / iGaming</strong> receberão copys exclusivas de apostas, enquanto perfis de <strong className="text-purple-400 font-semibold">grau / motos</strong> receberão copys de motos. Nenhuma mensagem é cruzada indevidamente.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Editor column */}
         <div className="lg:col-span-2 space-y-6">
           {/* Main Editor */}
           <div className="p-6 rounded-2xl bg-[#0f172a]/45 backdrop-blur-xl border border-white/8 space-y-4 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                <FileText className="w-4 h-4 text-purple-400 animate-pulse" />
-                Templates de Abordagem Ativos
-              </h3>
+            
+            {/* Header com Abas de Escopo */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-2 border-b border-white/5">
+              <div className="flex items-center gap-2">
+                <Layers className="w-4 h-4 text-purple-400" />
+                <span className="text-sm font-semibold text-white">Visualizar / Editar Templates:</span>
+              </div>
+
+              {/* Botões de alternância de escopo */}
+              <div className="flex items-center gap-1.5 p-1 rounded-xl bg-black/40 border border-white/10 text-xs">
+                <button
+                  type="button"
+                  onClick={() => setEditorScope('global')}
+                  className={`px-3 py-1 rounded-lg font-medium transition-all ${
+                    editorScope === 'global'
+                      ? 'bg-purple-600 text-white shadow-sm'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  Templates Gerais
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setEditorScope('niche')}
+                  className={`px-3 py-1 rounded-lg font-medium transition-all ${
+                    editorScope === 'niche'
+                      ? 'bg-purple-600 text-white shadow-sm'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  Por Nicho
+                </button>
+              </div>
+            </div>
+
+            {/* Seletor de Nicho quando escopo é nicho */}
+            {editorScope === 'niche' && (
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-purple-950/20 border border-purple-500/20 animate-fade-in">
+                <span className="text-xs text-gray-300 font-medium whitespace-nowrap">Segmento Ativo:</span>
+                <select
+                  value={activeNicheKey}
+                  onChange={(e) => setActiveNicheKey(e.target.value)}
+                  className="flex-1 px-3 py-1.5 text-xs rounded-lg bg-black/50 text-white border border-white/10 focus:outline-none focus:border-purple-500 transition-all"
+                >
+                  {PRESET_OPTIONS.map(opt => (
+                    <option key={opt.value} value={opt.value} className="bg-[#0b0c14]">
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            <div className="flex items-center justify-between pt-1">
+              <span className="text-[11px] text-gray-400">
+                {editorScope === 'global' 
+                  ? 'Templates de fallback geral (usados caso o lead não tenha nicho específico).' 
+                  : `Templates dedicados e exclusivos para perfis de ${PRESET_OPTIONS.find(p => p.value === activeNicheKey)?.label}.`}
+              </span>
               <button
                 onClick={handleSave}
                 disabled={isSaving}
@@ -234,14 +350,14 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
             </div>
             
             <p className="text-[11px] text-gray-500 leading-normal">
-              Insira seus textos abaixo. Use <code className="text-purple-400 bg-purple-500/5 px-1.5 py-0.5 rounded text-[10px] font-mono border border-purple-500/10">---</code> em uma linha isolada para criar múltiplos templates. O robô irá alternar entre eles de forma randômica a cada envio (evitando bloqueios no Instagram).
+              Use <code className="text-purple-400 bg-purple-500/5 px-1.5 py-0.5 rounded text-[10px] font-mono border border-purple-500/10">---</code> em uma linha isolada para separar múltiplos templates. O robô irá alternar entre eles a cada envio.
             </p>
- 
+
             <textarea
               value={editorText}
               onChange={(e) => setEditorText(e.target.value)}
-              placeholder={`Olá, tudo bem?\nVi seu perfil e gostei muito do seu engajamento...\n---\nFala parceiro, tudo tranquilo?\nTrabalhamos com campanhas de parcerias e seu perfil se encaixa...`}
-              rows={12}
+              placeholder={`Olá {nome}, tudo bem?\nVi seu perfil e achei seu engajamento incrível...\n---\nFala {nome}, tudo certo?\nTemos uma proposta imperdível para o seu nicho...`}
+              rows={11}
               className="w-full px-4 py-3 rounded-xl bg-black/40 text-white border border-white/8 focus:outline-none focus:border-purple-500/50 text-xs transition-all font-mono leading-relaxed resize-y"
               required
             />
@@ -253,7 +369,7 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-semibold text-white flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
-                Fábrica de Copys (Ideias de Prospecção)
+                Fábrica de Copys (Ideias de Prospecção por Segmento)
               </h3>
             </div>
             <p className="text-xs text-gray-400 leading-relaxed">
@@ -268,7 +384,7 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
                   onChange={(e) => setSelectedPreset(e.target.value)}
                   className="w-full px-3 py-2 text-xs rounded-xl bg-black/40 text-white border border-white/8 focus:outline-none focus:border-purple-500/50 transition-all font-sans"
                 >
-                  {presetOptions.map(opt => (
+                  {PRESET_OPTIONS.map(opt => (
                     <option key={opt.value} value={opt.value} className="bg-[#0b0c14]">{opt.label}</option>
                   ))}
                 </select>
@@ -289,7 +405,7 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
               <div className="space-y-4 mt-4 border-t border-white/5 pt-4 animate-fade-in">
                 <div className="text-xs font-bold text-purple-400 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5" />
-                  Sugestões Geradas baseadas no preset:
+                  Sugestões Geradas para o nicho [{PRESET_OPTIONS.find(p => p.value === selectedPreset)?.label}]:
                 </div>
                 <div className="grid grid-cols-1 gap-3">
                   {generatedCopies.map((copy, idx) => (
@@ -323,7 +439,7 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
                 <div className="flex flex-col md:flex-row gap-3 pt-2">
                   <button
                     type="button"
-                    onClick={applyGeneratedCopies}
+                    onClick={applyGeneratedCopiesToNiche}
                     className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 active:scale-95 border ${
                       justAdded 
                         ? 'bg-emerald-950/20 text-emerald-400 border-emerald-500/30' 
@@ -331,7 +447,7 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
                     }`}
                   >
                     <Plus className="w-4 h-4" />
-                    {justAdded ? 'Adicionado com Sucesso!' : 'Adicionar as 3 Copys ao Editor'}
+                    {justAdded ? 'Aplicado ao Editor de Nicho!' : `Usar no Nicho ${PRESET_OPTIONS.find(p => p.value === selectedPreset)?.label}`}
                   </button>
                   <button
                     type="button"
@@ -344,23 +460,23 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
               </div>
             )}
           </div>
- 
+
           {/* Guidelines */}
           <div className="p-5 rounded-2xl bg-[#0f172a]/20 border border-white/5 space-y-3">
             <h4 className="text-xs font-semibold text-white flex items-center gap-1.5">
               <HelpCircle className="w-3.5 h-3.5 text-purple-400" />
-              Como funciona o Motor de Disparos em Massa?
+              Como funciona o Disparo com Identificação de Nicho?
             </h4>
             <ul className="list-disc pl-5 text-[11px] text-gray-400 space-y-2">
-              <li>O robô carrega apenas leads qualificados com o status <span className="text-amber-400 font-semibold font-mono">PENDENTE</span>.</li>
-              <li>Acessa o perfil do lead, curte de 1 a 2 posts recentes (para gerar notificação visual e aquecer a conta).</li>
-              <li>Tenta interagir com stories ativos (se houver) respondendo com reações rápidas.</li>
-              <li>Abre a caixa de Direct Message, escolhe um dos templates salvos acima e envia o texto.</li>
-              <li>Atualiza o status do lead no banco de dados para <span className="text-emerald-400 font-semibold font-mono">ENVIADA</span> ou <span className="text-red-400 font-semibold font-mono">FALHA</span> em tempo real.</li>
+              <li>O sistema lê a tag de mineração e os dados do perfil no banco de dados.</li>
+              <li>A IA de Nicho classifica o lead em uma das categorias oficiais (ex: Apostas, Grau/Moto, Fitness, Beleza, etc.).</li>
+              <li>Seleciona e formata exclusivamente templates compatíveis com aquele segmento, evitando gafes de prospecção.</li>
+              <li>Acessa o perfil, realiza warm-up comportamental e envia via Story Reply ou Direct Message.</li>
+              <li>Atualiza o status para <span className="text-emerald-400 font-semibold font-mono">ENVIADA</span> com relatório completo no console.</li>
             </ul>
           </div>
         </div>
- 
+
         {/* Start/Stop action column */}
         <div>
           <div className="p-6 rounded-2xl bg-[#0f172a]/45 backdrop-blur-xl border border-white/8 flex flex-col items-center text-center space-y-6 justify-center h-full min-h-[300px] shadow-xl relative overflow-hidden">
@@ -374,9 +490,9 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white uppercase tracking-wider">Disparando Mensagens</h3>
+                  <h3 className="text-base font-bold text-white uppercase tracking-wider">Disparando com IA</h3>
                   <p className="text-gray-400 text-xs mt-2 max-w-[200px] mx-auto leading-relaxed">
-                    O operador visual está enviando abordagens personalizadas no Instagram.
+                    O operador visual está identificando os nichos e enviando abordagens personalizadas.
                   </p>
                 </div>
                 <button
@@ -393,9 +509,9 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
                   <Send className="w-8 h-8 text-gray-500" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white uppercase tracking-wider">Disparador Standby</h3>
+                  <h3 className="text-base font-bold text-white uppercase tracking-wider">Disparador Inteligente</h3>
                   <p className="text-gray-400 text-xs mt-2 max-w-[200px] mx-auto leading-relaxed">
-                    Selecione um nicho específico para direcionar a campanha ou envie para todos.
+                    Envie para todos com identificação automática de nicho ou filtre um nicho específico.
                   </p>
                 </div>
                 
@@ -404,7 +520,7 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
                   <div className="text-left">
                     <label className="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1.5 flex items-center gap-1">
                       <Filter className="w-3 h-3 text-purple-400" />
-                      Filtrar Campanha por Nicho
+                      Filtro de Disparo
                     </label>
                     <select
                       value={nicheFilter}
@@ -412,13 +528,13 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
                       className="w-full px-3 py-2.5 text-xs rounded-xl bg-black/40 text-white border border-white/8 focus:outline-none focus:border-purple-500/50 transition-all font-sans"
                       id="campaign-niche-select"
                     >
-                      <option value="todos" className="bg-[#0b0c14]">Todos os leads pendentes</option>
+                      <option value="todos" className="bg-[#0b0c14]">Todos os leads (Auto-detecção de nicho)</option>
                       {uniqueNiches.map(niche => (
                         <option key={niche} value={niche} className="bg-[#0b0c14]">{niche}</option>
                       ))}
                     </select>
                   </div>
- 
+
                   <button
                     onClick={handleStart}
                     className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs tracking-wider uppercase border border-emerald-500/30 shadow-lg shadow-emerald-500/15 transition-all hover:shadow-emerald-500/20 active:scale-95 duration-300"
