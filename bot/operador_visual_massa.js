@@ -430,6 +430,54 @@ const randomDelay = (min, max) => new Promise(resolve => setTimeout(resolve, Mat
             }
 
             if (messageSent) {
+                console.log(`➕ [SEGUIR LEAD]: Tentando seguir @${TARGET} após o envio da copy...`);
+                try {
+                    // Se estiver no Direct (URL contém /direct/), navegar de volta para o perfil do lead
+                    const currentUrl = page.url();
+                    if (currentUrl.includes('/direct/') || !currentUrl.includes(`/${TARGET}`)) {
+                        await page.goto(`https://www.instagram.com/${TARGET}/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                        await randomDelay(2500, 4500);
+                    }
+
+                    const followResult = await page.evaluate(() => {
+                        const buttons = Array.from(document.querySelectorAll('button, div[role="button"]'));
+                        
+                        // Verifica se já está seguindo para evitar unfollow acidental
+                        const alreadyFollowing = buttons.some(btn => {
+                            const txt = (btn.innerText || btn.textContent || '').trim().toLowerCase();
+                            return txt === 'seguindo' || txt === 'following' || txt === 'solicitado' || txt === 'requested';
+                        });
+
+                        if (alreadyFollowing) {
+                            return { status: 'already_following' };
+                        }
+
+                        // Localiza o botão de seguir
+                        const followBtn = buttons.find(btn => {
+                            const txt = (btn.innerText || btn.textContent || '').trim().toLowerCase();
+                            return txt === 'seguir' || txt === 'follow' || txt === 'seguir de volta' || txt === 'follow back';
+                        });
+
+                        if (followBtn) {
+                            followBtn.click();
+                            return { status: 'followed' };
+                        }
+
+                        return { status: 'not_found' };
+                    });
+
+                    if (followResult.status === 'followed') {
+                        console.log(`✅ [SEGUIR]: @${TARGET} seguido com sucesso no Instagram!`);
+                        await randomDelay(2000, 4000);
+                    } else if (followResult.status === 'already_following') {
+                        console.log(`ℹ️ [SEGUIR]: @${TARGET} já estava sendo seguido.`);
+                    } else {
+                        console.log(`⚠️ [SEGUIR]: Botão 'Seguir' não encontrado no perfil de @${TARGET}.`);
+                    }
+                } catch(followErr) {
+                    console.log(`⚠️ [SEGUIR]: Erro ao tentar seguir @${TARGET}: ${followErr.message}`);
+                }
+
                 await callAPI('/system/leads/status', {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },

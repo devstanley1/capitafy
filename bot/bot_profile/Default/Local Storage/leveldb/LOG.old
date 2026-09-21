@@ -1,9 +1,33 @@
-2026/09/21-13:52:52.180 6fdc Reusing MANIFEST C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/MANIFEST-000001
-2026/09/21-13:52:52.208 6fdc Recovering log #37
-2026/09/21-13:52:52.223 6fdc Reusing old log C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/000037.log 
-2026/09/21-13:55:55.372 5e74 Level-0 table #42: started
-2026/09/21-13:55:55.381 5e74 Level-0 table #42: 21998 bytes OK
-2026/09/21-13:55:55.387 5e74 Delete type=0 #37
-2026/09/21-13:59:41.456 5e74 Level-0 table #44: started
-2026/09/21-13:59:41.495 5e74 Level-0 table #44: 21652 bytes OK
-2026/09/21-13:59:41.505 5e74 Delete type=0 #41
+2026/09/21-15:02:22.739 58ac Reusing MANIFEST C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/09/21-15:02:22.742 58ac Recovering log #76
+2026/09/21-15:02:22.753 58ac Reusing old log C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/000076.log 
+2026/09/21-15:04:57.772 1454 Level-0 table #81: started
+2026/09/21-15:04:57.830 1454 Level-0 table #81: 14932 bytes OK
+2026/09/21-15:04:57.846 1454 Delete type=0 #76
+2026/09/21-15:05:25.347 1454 Level-0 table #83: started
+2026/09/21-15:05:25.353 1454 Level-0 table #83: 16450 bytes OK
+2026/09/21-15:05:25.355 1454 Delete type=0 #80
+2026/09/21-15:06:23.978 1454 Level-0 table #85: started
+2026/09/21-15:06:24.009 1454 Level-0 table #85: 15342 bytes OK
+2026/09/21-15:06:24.018 1454 Delete type=0 #82
+2026/09/21-15:07:01.689 1454 Level-0 table #87: started
+2026/09/21-15:07:01.726 1454 Level-0 table #87: 22651 bytes OK
+2026/09/21-15:07:01.740 1454 Delete type=0 #84
+2026/09/21-15:07:01.747 58ac Compacting 4@0 + 1@1 files
+2026/09/21-15:07:01.804 58ac Generated table #88@0: 2156 keys, 174834 bytes
+2026/09/21-15:07:01.805 58ac Compacted 4@0 + 1@1 files => 174834 bytes
+2026/09/21-15:07:01.806 58ac compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/09/21-15:07:01.816 58ac Delete type=2 #78
+2026/09/21-15:07:01.817 58ac Delete type=2 #81
+2026/09/21-15:07:01.817 58ac Delete type=2 #83
+2026/09/21-15:07:01.817 58ac Delete type=2 #85
+2026/09/21-15:07:01.817 58ac Delete type=2 #87
+2026/09/21-15:07:25.921 1454 Level-0 table #90: started
+2026/09/21-15:07:25.964 1454 Level-0 table #90: 13827 bytes OK
+2026/09/21-15:07:25.973 1454 Delete type=0 #86
+2026/09/21-15:07:51.523 1454 Level-0 table #92: started
+2026/09/21-15:07:51.557 1454 Level-0 table #92: 17172 bytes OK
+2026/09/21-15:07:51.568 1454 Delete type=0 #89
+2026/09/21-15:10:24.112 1454 Level-0 table #94: started
+2026/09/21-15:10:24.172 1454 Level-0 table #94: 15518 bytes OK
+2026/09/21-15:10:24.205 1454 Delete type=0 #91

@@ -471,7 +471,8 @@ export const CopiesView: React.FC<CopiesViewProps> = ({
               <li>O sistema lê a tag de mineração e os dados do perfil no banco de dados.</li>
               <li>A IA de Nicho classifica o lead em uma das categorias oficiais (ex: Apostas, Grau/Moto, Fitness, Beleza, etc.).</li>
               <li>Seleciona e formata exclusivamente templates compatíveis com aquele segmento, evitando gafes de prospecção.</li>
-              <li>Acessa o perfil, realiza warm-up comportamental e envia via Story Reply ou Direct Message.</li>
+              <li>Acessa o perfil, realiza warm-up comportamental (curtidas em posts) e envia via Story Reply ou Direct Message.</li>
+              <li><strong className="text-emerald-400">Segue o perfil qualificado</strong> logo após o envio da copy, aumentando a autoridade e gerando notificação no Instagram do lead.</li>
               <li>Atualiza o status para <span className="text-emerald-400 font-semibold font-mono">ENVIADA</span> com relatório completo no console.</li>
             </ul>
           </div>
