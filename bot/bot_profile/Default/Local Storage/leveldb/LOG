@@ -1,3 +1,15 @@
-2026/09/21-15:12:19.362 b80 Reusing MANIFEST C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/MANIFEST-000001
-2026/09/21-15:12:19.412 b80 Recovering log #93
-2026/09/21-15:12:19.443 b80 Reusing old log C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/000093.log 
+2026/09/24-13:04:25.139 7fc4 Reusing MANIFEST C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/09/24-13:04:25.150 7fc4 Recovering log #93
+2026/09/24-13:04:25.177 7fc4 Reusing old log C:\Users\stanl\OneDrive\Documentos\do antigravity\capitafy\bot\bot_profile\Default\Local Storage\leveldb/000093.log 
+2026/09/24-13:05:25.305 53b0 Level-0 table #97: started
+2026/09/24-13:05:25.319 53b0 Level-0 table #97: 21844 bytes OK
+2026/09/24-13:05:25.327 53b0 Delete type=0 #93
+2026/09/24-13:05:25.328 53b0 Compacting 4@0 + 1@1 files
+2026/09/24-13:05:25.349 53b0 Generated table #98@0: 2295 keys, 169751 bytes
+2026/09/24-13:05:25.349 53b0 Compacted 4@0 + 1@1 files => 169751 bytes
+2026/09/24-13:05:25.349 53b0 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/09/24-13:05:25.353 53b0 Delete type=2 #88
+2026/09/24-13:05:25.353 53b0 Delete type=2 #90
+2026/09/24-13:05:25.353 53b0 Delete type=2 #92
+2026/09/24-13:05:25.353 53b0 Delete type=2 #94
+2026/09/24-13:05:25.353 53b0 Delete type=2 #97

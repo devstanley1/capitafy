@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================================
-# Desenvolvido por @kkayron.dev
+# Desenvolvido por @stanley.dev
 # Reestruturado para React + Shadcn por Antigravity
 # =============================================================
 

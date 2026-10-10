@@ -1,6 +1,6 @@
 @echo off
 :: =============================================================
-:: Desenvolvido por @kkayron.dev
+:: Desenvolvido por @stanley.dev
 :: Reestruturado para React + Shadcn por Antigravity
 :: =============================================================
 title Capitafy CRM
